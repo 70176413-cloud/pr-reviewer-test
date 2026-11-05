@@ -1,12 +1,12 @@
 # Automated PR Reviewer
 
-Fail-closed MVP for GitHub Pull Requests + Jira Cloud. It fetches a linked ticket and PR diff, evaluates acceptance criteria with an LLM, comments on the PR, and optionally requests a squash merge.
+Fail-closed MVP for GitHub Pull Requests + Jira Cloud using xAI Grok by default. It fetches a linked ticket and PR diff, evaluates acceptance criteria with Grok, comments on the PR, and optionally requests a squash merge.
 
 ## Run locally
 1. Install Python 3.11+.
 2. Create and activate a virtual environment: `python -m venv .venv`.
 3. Install dependencies: `pip install -r requirements.txt`.
-4. Copy `.env.example` to `.env` and fill credentials locally. Never commit `.env`.
+4. Copy `.env.example` to `.env` and fill credentials locally. Set `GROK_API_KEY` to a newly generated xAI key, keep `LLM_BASE_URL=https://api.x.ai/v1` and `LLM_MODEL=grok-3-mini`, and add your Jira URL/email/new API token. Never commit `.env`.
 5. Export the variables from `.env` in your shell.
 6. Start the API: `uvicorn app:app --reload --port 8000`.
 7. Expose the service over HTTPS and configure GitHub Settings → Webhooks:
